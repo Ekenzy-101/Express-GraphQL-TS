@@ -1,0 +1,32 @@
+{
+  "name": "express-with-graphql-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon dist/index.js",
+    "start": "node dist/index.js",
+    "watch": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.21.2",
+    "class-validator": "^0.13.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "fastest-validator": "^1.10.0",
+    "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.31"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/node": "^14.14.35"
+  }
+}

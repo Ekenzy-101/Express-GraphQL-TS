@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    /* BASIC OPTIONS */
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["ES2017", "ES2018", "ESNext.AsyncIterable"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+
+    /* STRICT TYPE-CHECKING OPTIONS */
+    // "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* ADDITIONAL CHECKS */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* MODULE RESOLUTION OPTIONS */
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    /* SOURCE MAP OPTIONS */
+
+    /* EXPERIMENTAL OPTIONS */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "resolveJsonModule": true,
+    /* ADVANCED OPTIONS */
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "index.d.ts", "*d.ts"]
+}
