@@ -1,4 +1,4 @@
-import { ApolloError, ExpressContext } from "apollo-server-express";
+import { ExpressContext } from "apollo-server-express";
 import { Args, ArgsType, Ctx, Field, Mutation, Resolver } from "type-graphql";
 import bcrypt from "bcrypt";
 
@@ -31,11 +31,11 @@ export class AuthResolver {
       name: "string|min:1|max:50",
     };
     const errors = getValidationErrors(args, schema);
-    if (errors) throw new ApolloError(JSON.stringify(errors));
+    if (errors) throw new Error(JSON.stringify(errors));
 
     let user = await User.findOne({ where: { email: args.email } });
     if (user) {
-      throw new ApolloError(JSON.stringify({ email: "Email already exists" }));
+      throw new Error(JSON.stringify({ email: "Email already exists" }));
     }
 
     const hashedPassword = await bcrypt.hash(args.password, 12);
@@ -59,16 +59,16 @@ export class AuthResolver {
       password: "string|min:6",
     };
     const errors = getValidationErrors(args, schema);
-    if (errors) throw new ApolloError(JSON.stringify(errors));
+    if (errors) throw new Error(JSON.stringify(errors));
 
     let user = await User.findOne({ where: { email: args.email } });
     if (!user) {
-      throw new ApolloError("Invalid Email or Password");
+      throw new Error("Invalid Email or Password");
     }
 
     const isValid = await bcrypt.compare(args.password, user.password);
     if (!isValid) {
-      throw new ApolloError("Invalid Email or Password");
+      throw new Error("Invalid Email or Password");
     }
 
     const token = user.generateAccessToken();

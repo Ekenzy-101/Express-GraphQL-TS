@@ -6,9 +6,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Post } from "./Post";
 
 @Entity({ name: "users" })
 @ObjectType({ description: "A user" })
@@ -31,6 +33,10 @@ export class User extends BaseEntity {
 
   @Column("text")
   password: string;
+
+  @OneToMany(() => Post, (post) => post.user, { eager: true, cascade: true })
+  @Field(() => [Post])
+  posts: Post[];
 
   @UpdateDateColumn({ name: "updated_at" })
   @Field()
