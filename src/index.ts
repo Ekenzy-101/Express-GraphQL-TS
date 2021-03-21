@@ -5,29 +5,15 @@ import jwt from "express-jwt";
 import { buildSchema } from "type-graphql";
 import cookieParser from "cookie-parser";
 
-import {
-  ACCESS_TOKEN_COOKIE_NAME,
-  APP_ACCESS_SECRET,
-  DATABASE_URL,
-  DB_CONNECTION,
-  IS_PRODUCTION,
-} from "./config";
+import { ACCESS_TOKEN_COOKIE_NAME, APP_ACCESS_SECRET } from "./config";
 import { createConnection } from "typeorm";
-import { User } from "./entities/User";
-import { Post } from "./entities/Post";
 import { AuthResolver } from "./resolvers/auth";
 import { PostResolver } from "./resolvers/post";
 import { TestResolver } from "./resolvers/test";
 
 const start = async () => {
   try {
-    await createConnection({
-      entities: [User, Post],
-      synchronize: true,
-      logging: !IS_PRODUCTION,
-      type: DB_CONNECTION,
-      url: DATABASE_URL,
-    });
+    await createConnection();
 
     const app = express();
 
